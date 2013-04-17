@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Testing - Initializing</title>
+	<link rel="stylesheet" href="../assets/css/reset.css" type="text/css">
+	<script type="text/javascript" src="../assets/js/KWENTE.js"></script>
+	<script type="text/javascript" src="../assets/js/KWENTE.scene.js"></script>
+	<script type="text/javascript" src="../assets/js/KWENTE.drawing.js"></script>
+	<script type="text/javascript">
+		var kwente;
+	
+		function initialize(){
+			kwente = new KWENTE.scene({ canvas : document.getElementById('canvasNode') });
+			
+			kwente.context.fillRect(20,20,30,30);
+			
+			(console&&console.log || alert)( "initialized!", KWENTE );
+		}
+	</script>
+</head>
+<body onload="initialize();">
+	<canvas id="canvasNode">You need an HTML5 Browser</canvas>
+</body>
+</html>

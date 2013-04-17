@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Testing - Initializing</title>
+	<link rel="stylesheet" href="../css/reset.css" type="text/css">
+	<style>
+		#buttons {
+			width: 50px;
+			height: 100%;
+			float: left;
+			border-right: grey thin solid;
+			text-align: center;
+		}
+		#buttons * {
+			width : 45px;
+			/* border: black thin solid;*/
+			height: 45px;
+			text-align: center;
+		}
+	</style>
+	<script type="text/javascript" src="../../build/kwente.js"></script>
+	<script type="text/javascript">
+		var kwente;
+	
+		function initialize(){
+			
+			kwente = new KWENTE.scene({ canvas : document.getElementById('canvasNode') });
+			
+			kwente.editDrawing({which:null}); // new sketch
+
+			var test_point = new KWENTE.drawing2D.shapes.point({x:4, y:4, z:4});
+			kwente.addToDrawing( test_point ); //must be open :)
+			kwente.addToDrawing( new KWENTE.drawing2D.shapes.point({x: 4, y:-4, z:4}) );
+			kwente.addToDrawing( new KWENTE.drawing2D.shapes.point({x:-4, y:-4, z:4}) );
+			kwente.addToDrawing( new KWENTE.drawing2D.shapes.point({x:-4, y: 4, z:4}) );
+			
+			var test_line = new KWENTE.drawing2D.shapes.line({points:[{x:3, y:2, z:2},{x:7, y:6, z:2}]});
+			kwente.addToDrawing( test_line );
+			
+			//kwente.draw_point({x:0,y:0});
+			
+			//kwente.draw_line({x:0,y:0},{x:-10,y:0});
+			//kwente.draw_line({x:0,y:0},{x:0,y:-10});
+			
+			//kwente.redraw();
+			
+			//var i = kwente.fui.requestBasePoint();
+			//kwente.fui.basePointMovement(i);
+			
+			/*
+			kwente.fui.registerEvent( 'button', 'down', function( states, fui ){
+				console.log( 'button went down', fui.lastKeyDown, states.keyboard );
+			});//*/
+			
+			/*
+			kwente.fui.registerEvent( 'button', 'down', function( states, fui ){
+				//console.log( 'button went down', kwente.translateCoordinate(kwente.getAdjustedCoordinate(kwente.fui.states.mouse.position)) );
+				//console.log( 'button went down', states.keyboard.was, states.keyboard );
+			});//*/
+			
+			/*
+			kwente.fui.registerEvent( 'button', 'up', function( states, fui ){
+				console.log( 'button came up', states.keyboard.was, states.keyboard );
+			});//*/
+			
+			//kwente.openDrawing.closestPoint({x:0,y:0});
+			
+			// profile the time to calc the closest point
+			(function(){var start = Date.now();var pt = kwente.openDrawing.closestPoint({x:0,y:0});var stop = Date.now();console.log('time taken to determine the closest point was', stop - start, 'ms and was ', pt);})();
+			
+			
+			//(console&&console.log || alert)( "initialized!", KWENTE );
+			//console.log( "initialized!", KWENTE );
+		}
+	</script>
+</head>
+<body onload="initialize();">
+	<div id="buttons">
+		<input type="button" value="*" title="Point (P)" onclick="kwente.openDrawing.changeDrawingMode( KWENTE.drawing.sketch.prototype.DRAWING_MODE_POINT);">
+		<input type="button" value="|" title="Line (L)" onclick="kwente.openDrawing.changeDrawingMode( KWENTE.drawing.sketch.prototype.DRAWING_MODE_LINE);">
+	</div>
+	
+	<canvas id="canvasNode">You need an HTML5 Browser</canvas>
+</body>
+</html>

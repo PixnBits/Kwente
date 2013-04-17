@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Testing - Initializing</title>
+	<link rel="stylesheet" href="../css/reset.css" type="text/css">
+	<style>
+		#buttons {
+			width: 50px;
+			height: 100%;
+			float: left;
+			border-right: grey thin solid;
+			text-align: center;
+		}
+		#buttons * {
+			width : 45px;
+			/* border: black thin solid;*/
+			height: 45px;
+			text-align: center;
+		}
+	</style>
+	<script type="text/javascript" src="../../build/kwente.js"></script>
+	<script type="text/javascript">
+		var kwente;
+	
+		function initialize(){
+			
+			kwente = new KWENTE.scene();
+			
+			//kwente.editDrawing({which:null}); // new sketch
+		}
+	</script>
+</head>
+<body onload="initialize();">
+</body>
+</html>

@@ -1,0 +1,1 @@
+KWENTE.drawing2D.shapes = {};
